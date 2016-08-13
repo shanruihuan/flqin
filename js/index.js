@@ -4,27 +4,24 @@
 		url: "ajax/message.json",
 		dataType: "json",
 		success: function(data){
-			for(var i in data.about_info){
-				$("#about_info").append("<p>"+data.about_info[i]+"</p>");
-			}
+			data.about_info.forEach(function(item){
+				$("#about_info").append("<p>"+item+"</p>");
+			});
 			$("#skill_info").append("<p>"+data.skill_info+"</p>");
 			$(".skill_int").append("<ul></ul>");
-			for(var i in data.seo){
-				$("#skill_int1 ul").append("<li>"+data.seo[i]+"</li>");
-			}
-			for(var i in data.html){
-				$("#skill_int2 ul").append("<li>"+data.html[i]+"</li>");
-			}
-			for(var i in data.css){
-				$("#skill_int3 ul").append("<li>"+data.css[i]+"</li>");
-			}
-			for(var i in data.javaScript){
-				$("#skill_int4 ul").append("<li>"+data.javaScript[i]+"</li>");
-			}
+			data.html.forEach(function(item){
+				$("#skill_int2 ul").append("<li>"+item+"</li>");
+			});
+			data.css.forEach(function(item){
+				$("#skill_int3 ul").append("<li>"+item+"</li>");
+			});
+			data.javaScript.forEach(function(item){
+				$("#skill_int4 ul").append("<li>"+item+"</li>");
+			});
 			$("#exp_info").append("<p>"+data.exp_info+"</p>");
-			for(var i in data.contact_info){
-				$("#contact_info").append("<p>"+data.contact_info[i]+"</p>");	
-			}
+			data.contact_info.forEach(function(item){
+				$("#contact_info ul").append("<li>"+item+"</li>");
+			});
 		}
 	});
     $('#dowebok').fullpage({
@@ -151,7 +148,7 @@
 				},70);
 			}
 		},
-		onLeave:function(index , nextIndex, direction){
+		onLeave:function(index){
 			if(index==2||index==3||index==4||index==5||index==6){
 				$(".title_en").remove();	
 			}
@@ -165,16 +162,16 @@
 	}).mouseout(function(){
 		$("#header_p1").html("F2E");
 		$("#header_p2").html("个人简历");	
-	})
+	});
 //顶部导航取消
 	$("header nav a:not(':first')").click(function(){
 		alert("正在努力建设中...请稍等");
 		return false;
-	})
+	});
 //侧边导航文字切换
 	$("aside a").hover(function(){
 		$(this).find("b").fadeToggle(200,"easeInOutCubic");
-	})
+	});
 // 头像切换
 	$("#home_photo2").hover(function(){
 		$(this).fadeTo(800,1);
@@ -196,7 +193,7 @@
 			$(this).siblings(".skill_int").slideUp(200);
 			$(this).siblings(".skill_flag").removeClass("skill_flag_scale");
 		}
-	})
+	});
 // 图片轮播
 	$("#exp_list_slider").width($(".exp_list").width());
 	$("#exp_list_content").width($(".exp_list").width()*3);
@@ -263,23 +260,12 @@
 			$("#contact_form").fadeIn(200);
 		})
 	});
-// 提交表单
-	$("#contact_submit").click(function(){
-		$.get("ajax/get.php",function(){
-			$("#contact_form").fadeOut(200,function(){
-				$("#contact_message2").fadeIn(200);
-				});
-			});
-	});
-//内容适应居中
-	var size=$(function(){
+////内容适应居中
+	$(function(){
 		$("aside").css({"top":($(".active").height()-$("aside").height())/2});
 		$("#home_content").css({"padding-top":($(".active").height()-$("#home_content").height())/6});
 		$("#about_content").css({"padding-top":($(".active").height()-$("#about_content").height())/6});
 		$("#skill_content").css({"padding-top":($(".active").height()-$("#skill_content").height())/6});
 		$("#exp_content").css({"padding-top":($(".active").height()-$("#exp_content").height())/6});
-		$("#demo_content").css({"padding-top":($(".active").height()-$("#demo_content").height())/6});;
-	});
-	$(window).resize(function(){
-		size();
+		$("#demo_content").css({"padding-top":($(".active").height()-$("#demo_content").height())/6});
 	});
