@@ -980,28 +980,15 @@ img#home_photo2 {
 }
 #contact_form {
 	display: none;
+	text-align: center;
+	padding-top: 80px;
+	font-size: 14px;
 }
-#contact_form form {
-	margin: 10px auto;
-	border: 1px solid #35a5e5;
-	width: 300px;
+#contact_form a {
+	color: #3cf;
 }
-#contact_form ul {
-	margin: 10px auto;
-}
-#contact_form input {
-	display: block;
-	margin: 0 auto 10px;
-	width: 250px;
-	line-height: 30px;
-	border: #35a5e5 1px solid;
-	border-radius: 3px;
-	outline: none;
-	-webkit-transition: all 0.30s ease-in-out;
-	transition: all 0.30s ease-in-out;
-}
-#contact_form input:focus {
-	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+#contact_form a:hover {
+	text-decoration:underline;
 }
 #contact textarea {
 	display: block;
