@@ -204,7 +204,7 @@
 		$("#exp_list_to").stop(true,false).fadeTo(700,1);
 	}).mouseleave(function(){
 		$("#exp_list_to").stop(true,false).fadeTo(700,0.1);
-	})
+	});
 	var page=1;
 	$("#exp_timeline a").click(function(){
 		$("#exp_list_content").stop(true,false).animate({left:-$(".exp_list").width()*$(this).index()},2000,"easeInOutCubic");
